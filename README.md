@@ -1,3 +1,11 @@
+---
+title: Expense Tracker OpenEnv
+emoji: 💰
+colorFrom: green
+colorTo: blue
+sdk: docker
+pinned: false
+---
 # 💰 Expense Tracker Environment
 
 An OpenEnv environment where AI agents learn to manage personal finances — categorizing expenses, detecting budget violations, and optimizing spending.

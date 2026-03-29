@@ -121,10 +121,10 @@ class ExpenseTrackerEnvironment(Environment):
             if action.category == correct:
                 reward = 1.0
                 self._correctly_handled += 1
-                message = f"✅ Correct! Expense {action.expense_id} is '{correct}'"
+                message = f" Correct! Expense {action.expense_id} is '{correct}'"
             else:
                 reward = -0.1
-                message = f"❌ Wrong! '{action.category}' is incorrect for expense {action.expense_id}"
+                message = f" Wrong! '{action.category}' is incorrect for expense {action.expense_id}"
 
             # Update expense category
             for exp in self._expenses:
@@ -146,10 +146,10 @@ class ExpenseTrackerEnvironment(Environment):
                     reward = 1.0
                     self._correctly_handled += 1
                     self._flags_raised.append(action.expense_id)
-                    message = f"✅ Correct! {flagged_category} is over budget (₹{total} > ₹{limit})"
+                    message = f"Correct! {flagged_category} is over budget (₹{total} > ₹{limit})"
                 else:
                     reward = -0.1
-                    message = f"❌ Wrong! {flagged_category} is within budget (₹{total} <= ₹{limit})"
+                    message = f" Wrong! {flagged_category} is within budget (₹{total} <= ₹{limit})"
 
         elif action.action_type == "suggest_cut":
             # Hard task
@@ -162,10 +162,10 @@ class ExpenseTrackerEnvironment(Environment):
                         if exp["amount"] > 3000:
                             reward = 0.8
                             self._correctly_handled += 1
-                            message = f"✅ Good suggestion for expense {action.expense_id} (₹{exp['amount']})"
+                            message = f" Good suggestion for expense {action.expense_id} (₹{exp['amount']})"
                         else:
                             reward = 0.2
-                            message = f"⚠️ Better to focus on higher expenses first"
+                            message = f" Better to focus on higher expenses first"
 
         # Check if done
         done = self._total_actions >= len(self._expenses)
