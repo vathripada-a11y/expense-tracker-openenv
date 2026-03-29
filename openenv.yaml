@@ -1,0 +1,28 @@
+spec_version: 1
+name: expense_tracker
+type: space
+runtime: fastapi
+app: server.app:app
+port: 8000
+description: "Personal Expense Tracker Environment - AI agent learns to categorize expenses, detect budget violations, and optimize spending"
+author: "Thripada V A"
+tags:
+  - openenv
+  - expense-tracking
+  - personal-finance
+  - budget-optimization
+tasks:
+  - name: easy
+    description: "Categorize expenses into correct categories (Food, Transport, Entertainment, Shopping, Bills)"
+    difficulty: easy
+  - name: medium
+    description: "Detect which expense categories are over budget and flag them"
+    difficulty: medium
+  - name: hard
+    description: "Suggest budget cuts to optimize monthly spending within limits"
+    difficulty: hard
+baseline_scores:
+  easy: 1.00
+  medium: 0.78
+  hard: 0.58
+  overall: 0.79
