@@ -1,4 +1,4 @@
-import json
+﻿import json
 from server.expense_tracker_environment import ExpenseTrackerEnvironment
 from models import ExpenseAction
 
@@ -11,11 +11,7 @@ def run_inference():
     while not obs.done and steps < 5:
         expense = obs.expenses[steps]
         desc = expense["description"].lower()
-        category = "Food" if any(k in desc for k in ["swiggy","grocery","zomato"]) else \
-                   "Transport" if any(k in desc for k in ["uber","ola"]) else \
-                   "Entertainment" if "netflix" in desc else \
-                   "Bills" if "electricity" in desc else \
-                   "Shopping" if "shopping" in desc else "Other"
+        category = "Food" if any(k in desc for k in ["swiggy","grocery","zomato"]) else "Transport" if any(k in desc for k in ["uber","ola"]) else "Entertainment" if "netflix" in desc else "Bills" if "electricity" in desc else "Shopping" if "shopping" in desc else "Other"
         action = ExpenseAction(action_type="categorize", expense_id=expense["id"], category=category)
         obs = env.step(action)
         total_reward += obs.reward or 0
